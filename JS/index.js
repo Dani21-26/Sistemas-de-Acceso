@@ -35,29 +35,40 @@ document.getElementById('togglePassword').
         document.getElementById('forgotPasswordError').innerText = '';
     
         // Validación de los datos del formulario
-        if (username.trim() === '' || password.trim() === '' || password.length < 8 || !/[0-9]/.test(password) || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        if (username.trim() === '' || password.trim() === '') {
             // Mostrar mensajes de error según corresponda
             if (username.trim() === '') {
                 document.getElementById('usernameError').innerText = 'El nombre de usuario no puede estar vacío';
             }
             if (password.trim() === '') {
                 document.getElementById('passwordError').innerText = 'La contraseña no puede estar vacía';
-            } else if (password.length < 8) {
-                document.getElementById('passwordError').innerText = 'La contraseña debe tener al menos 8 caracteres';
-            } else if (!/[0-9]/.test(password) || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-                document.getElementById('passwordError').innerText = 'La contraseña debe contener al menos un dígito numérico y un carácter especial';
             }
             return;
         }
     
-        // Si los datos son correctos, simular una respuesta exitosa del servidor
-        setTimeout(function() {
-            // Simular una respuesta exitosa del servidor
-            alert('¡Formulario enviado!');
-            // Redirigir al usuario a la nueva vista
-            window.location.href = './pages/panel.php'; // Cambia esto por la ruta a tu nueva vista
-        }, 1000); // Simular un retraso de 1 segundo
+        // Enviar los datos del formulario al servidor
+        fetch('login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redirigir al usuario a la nueva vista
+                window.location.href = './pages/panel.php'; // Cambia esto por la ruta a tu nueva vista
+            } else {
+                // Mostrar mensaje de error
+                document.getElementById('passwordError').innerText = data.message;
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     });
+    
     
 document.getElementById('forgotPasswordLink').
     addEventListener('click', function () {
