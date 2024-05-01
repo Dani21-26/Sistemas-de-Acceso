@@ -2,6 +2,10 @@
 <head>
     <?php include('./container/Link.php')?>
     <title>Login</title>
+    <head>
+    <link rel="stylesheet" type="text/css" href="../css/sty.css">
+</head>
+
 </head>
 
 <body class="bg-gradient-to-r from-purple-400 to-pink-500  min-h-screen flex items-center justify-center">
