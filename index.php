@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <?php include('./container/Link.php')?>
     <title>Login</title>
     <head>
-    <link rel="stylesheet" type="text/css" href="../css/sty.css">
+    <?php include('./container/Link.php')?>
 </head>
 
 </head>
