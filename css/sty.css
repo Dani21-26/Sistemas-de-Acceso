@@ -55,4 +55,7 @@ body.active nav ul li a {
 body.dark .header_info {
     background-color: #2c2c2c;
 }
+.h-8 {
+    border-radius: 10px;
 
+}
