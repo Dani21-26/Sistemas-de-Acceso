@@ -2,7 +2,7 @@
 $servername = "localhost";
 $database = "acceso";
 $username = "root";
-$password = "";
+$password = "123";
 
 //creamos conecion
 $conexion = mysqli_connect($servername,  $username, $password, $database);
