@@ -3,7 +3,6 @@
 </head>
 
 
-<body class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
   <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -35,6 +34,11 @@
           <li>
             <a href="../pages/ajustes.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">settings</a>
           </li>
+          <li>
+          <button class="text-dark focus:outline-none" id="navbarDropdown" aria-haspopup="true" aria-expanded="false">
+            ☰
+        </button>
+          </li>
           <li class="mode mr-4">
             <button id="toggleDarkMode" aria-label="Cambiar modo oscuro">
               <img src="../img/soleado.png" alt="Icono Sol">
@@ -42,15 +46,11 @@
             <button id="toggleLightMode" aria-label="Cambiar modo claro">
               <img src="../img/luna.png" alt="Icono Luna">
             </button>
-          </li>
-
-
-
-
-
-        </ul>
+            </li>
+            
+            
+          
       </div>
       <script src="../JS/dark.js"></script>
     </div>
   </nav>
-</body>
