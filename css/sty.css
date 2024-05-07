@@ -16,8 +16,8 @@
 .font-medium li:last-child::before{
     content: "";
     position: absolute;
-    height: 25px;
-    width: 25px;
+    height: 27px;
+    width: 27px;
     border-radius: 60%;
     background-color: #fff;
     border: solid thin #000;
