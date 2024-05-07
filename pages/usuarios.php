@@ -7,11 +7,9 @@
     <title>Panel de Administrador</title>
 <?php require_once('../container/Link.php')?>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/sty.css">
-
 </head>
 
-<body>
+<body class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
 
     <?php require_once('../container/Navar.php') ?>
 
