@@ -1,4 +1,4 @@
-/*Estilos del Dark*/
+/* Estilos del círculo del modo oscuro */
 .mode {
     width: 60px;
     height: 30px;
@@ -9,53 +9,54 @@
     position: relative;
     border-radius: 100px;
     border: #333 solid 2px;
-    background-color:rgb(29, 75, 201);
-
+    background-color: rgb(29, 75, 201);
 }
 
-.font-medium li:last-child::before{
+/* Estilos para el círculo del modo oscuro en la barra de navegación */
+.font-medium li.mode {
+    position: relative;
+}
+
+.font-medium li.mode::before {
     content: "";
     position: absolute;
-    height: 25px;
-    width: 25px;
-    border-radius: 60%;
+    height: 27px;
+    width: 27px;
+    border-radius: 50%;
     background-color: #fff;
     border: solid thin #000;
     left: 0;
     right: unset;
 }
-.font-medium li:last-child.active::before{
+
+.font-medium li.mode.active::before {
     right: 0;
     left: unset; 
     border: solid thin #fff;
-
-
 }
-/* cada que se active cambia de color */
-.font-medium li:last-child.active{
-    background-color: rgb(29, 75, 201);
-    border: solid 2px #fff;
 
-}
-/* cuando está activa la clase 'active'  se debe activar el modo oscuro en el body*/
+/* Estilos para cambiar al modo oscuro en el body */
 body.active {
-    
     background-color: #2c2c2c;
     color: #ffffff;
 }
+
 body.active nav {
     background-color: #313131;
 }
-body.active nav ul{
+
+body.active nav ul {
     background-color: #313131;
 }
+
 body.active nav ul li a {
-    color: #ffffff;;
+    color: #ffffff;
 }
+
 body.dark .header_info {
     background-color: #2c2c2c;
 }
+
 .h-8 {
     border-radius: 10px;
-
 }

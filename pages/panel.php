@@ -10,7 +10,7 @@
 <body class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
 <?php require_once('../container/Navar.php') ?>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
 </html>
 
