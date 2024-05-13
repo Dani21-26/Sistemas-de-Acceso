@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include './config/db.php';
 
 $username = $_POST['username'];
@@ -13,6 +15,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     if ($password === $user['contraseña']) {
+        $_SESSION['usuario'] = $user['id'];
         echo json_encode(['success' => true]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Contraseña incorrecta']);

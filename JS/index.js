@@ -58,7 +58,7 @@ document.getElementById('togglePassword').
         .then(data => {
             if (data.success) {
                 // Redirigir al usuario a la nueva vista
-                window.location.href = './pages/panel.php'; // Cambia esto por la ruta a tu nueva vista
+                window.location.href = './pages/panel.php'; 
             } else {
                 // Mostrar mensaje de error
                 document.getElementById('passwordError').innerText = data.message;

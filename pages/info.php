@@ -1,8 +1,16 @@
 <?php
-// ver_usuario.php
-require_once('../config/db.php'); // Asegúrate de que este archivo exista y esté configurado correctamente
 
-// Definir la cantidad de registros por página
+if(!isset($_SESSION)) { 
+    session_start(); 
+} 
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../index.php');
+    exit;
+}
+
+require_once('../config/db.php'); 
+
+
 $registrosPorPagina = 5;
 
 if (isset($_GET['idUsuario'])) {
@@ -10,7 +18,7 @@ if (isset($_GET['idUsuario'])) {
     $sql = $conexion->query("SELECT * FROM usuarios WHERE idUsuario = $idUsuario");
     $usuario = $sql->fetch_object();
 
-    // Obtener el número total de registros
+    //  total de registros
     $totalRegistros = mysqli_num_rows($conexion->query("SELECT * FROM acceso_de_user WHERE idUsuario = $idUsuario"));
 
     // Calcular el número total de páginas
