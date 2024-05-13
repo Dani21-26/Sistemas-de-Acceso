@@ -18,3 +18,4 @@ swith.addEventListener("click", e => {
     const isDarkModeActive = document.body.classList.contains('active');
     localStorage.setItem('isDarkMode', isDarkModeActive);
 });
+

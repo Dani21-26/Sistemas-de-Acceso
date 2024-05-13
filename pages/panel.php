@@ -7,7 +7,7 @@
     <?php require_once('../container/Link.php')?>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
+<body class="">
 <?php require_once('../container/Navar.php') ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
