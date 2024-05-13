@@ -40,7 +40,15 @@ if (isset($_GET['idUsuario'])) {
 
     <body class="bg-gray-100">
         <?php require_once('../container/Navar.php') ?>
+
         <div class="max-w-2xl mx-auto py-8">
+            <button class=" m-2 cursor-pointer transition-all 
+                  bg-gray-700 text-white px-6 py-2 rounded-lg
+                  border-green-400
+                  border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
+                  active:border-b-[2px] active:brightness-90 active:translate-y-[2px] hover:shadow-xl hover:shadow-green-300 shadow-green-300 active:shadow-none">
+                <a href="./usuarios.php">Volver</a>
+            </button>
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <h2 class="text-2xl mb-4">Información del Usuario</h2>
                 <table class="w-full mb-6">
