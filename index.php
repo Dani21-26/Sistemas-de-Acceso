@@ -61,7 +61,7 @@
                     </div>
                     <p id="passwordError" class="text-red-500 text-sm"></p>
                 </div>
-                <button type="button" id="loginSubmit" class="bg-gradient-to-r 
+                <button type="submit" id="loginSubmit" class="bg-gradient-to-r 
                     from-pink-500 to-purple-500 text-white py-2 px-4 
                     rounded-full focus:outline-none focus:shadow-outline 
                     transform hover:scale-105 transition duration-300">
