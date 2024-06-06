@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, eliminar!'
             }).then((result) => {
-                if (result.isConfirmed) {
-                   
+                if (result.isConfirmed) {      
                     fetch('../controllers/user/eliminar_usuario.php', {
                         method: 'POST',
                         headers: {

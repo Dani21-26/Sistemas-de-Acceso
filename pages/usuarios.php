@@ -109,7 +109,6 @@ if (!isset($_SESSION['usuario'])) {
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
->>>>>>> Dani-developer
     <script src="../JS/eliminar_usuario.js"></script>
     <script src="../JS/info_user.js"></script>
     <script src="../JS/agregar_user.js"></script>
