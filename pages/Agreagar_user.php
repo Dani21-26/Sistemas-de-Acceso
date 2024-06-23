@@ -20,7 +20,7 @@
                                         </div>
                                         <div class="col-span-6 sm:col-span-3">
                                             <label for="huella_digital" class="block text-sm font-medium text-gray-700">Huella Digital</label>
-                                            <input type="file" name="huella_digital" id="huella_digital" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            <input type="number" name="huella_digital" id="huella_digital" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                         </div>
                                     </div>
                                     <div class="mt-5 sm:mt-6">

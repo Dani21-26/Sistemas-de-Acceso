@@ -1,9 +1,9 @@
 <?php
 require_once('../../config/db.php'); 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'], $_FILES['huella_digital'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'], $_POST['huella_digital'])) {
     $nombre = $_POST['nombre'];
-    $huella_digital = $_FILES['huella_digital'];
+    $huella_digital = $_POST['huella_digital'];
 
     // Validar
     if (empty($nombre)) {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'], $_FILES['hu
     // Preparar
     $stmt = $conexion->prepare($sql);
     // Enlazar los parámetros a la sentencia SQL
-    $stmt->bind_param("ss", $nombre, $huella_digital['tmp_name']);
+    $stmt->bind_param("ss", $nombre, $huella_digital);
     // Ejecutar
     if ($stmt->execute()) {
         echo json_encode(['success' => true]);

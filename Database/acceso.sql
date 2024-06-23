@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2024 a las 06:31:02
+-- Tiempo de generación: 23-06-2024 a las 00:55:56
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -48,6 +48,13 @@ CREATE TABLE `administrador` (
   `contraseña` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`id`, `nombre`, `telefono`, `correo`, `contraseña`) VALUES
+(1, 'admin', '3156788345', 'danieladiaz@gmail.com', 'Dani@22*');
+
 -- --------------------------------------------------------
 
 --
@@ -55,10 +62,18 @@ CREATE TABLE `administrador` (
 --
 
 CREATE TABLE `alarmas` (
-  `id` int(11) NOT NULL,
+  `idAlarma` int(11) NOT NULL,
   `fecha_hora` timestamp NOT NULL DEFAULT current_timestamp(),
   `descripcion` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `alarmas`
+--
+
+INSERT INTO `alarmas` (`idAlarma`, `fecha_hora`, `descripcion`) VALUES
+(1, '2024-06-22 18:50:53', 'Primera alarma'),
+(2, '2024-06-22 21:49:17', 'Segunda alarma');
 
 -- --------------------------------------------------------
 
@@ -69,8 +84,18 @@ CREATE TABLE `alarmas` (
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
-  `huella_digital` blob NOT NULL
-) ;
+  `huella_digital` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `nombre`, `huella_digital`) VALUES
+(4, 'Daniela', 3),
+(5, 'Dani', 1),
+(6, 'fernando', 5),
+(7, 'marcelo', 5);
 
 --
 -- Índices para tablas volcadas
@@ -93,7 +118,7 @@ ALTER TABLE `administrador`
 -- Indices de la tabla `alarmas`
 --
 ALTER TABLE `alarmas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idAlarma`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -115,19 +140,13 @@ ALTER TABLE `acceso_de_user`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `alarmas`
---
-ALTER TABLE `alarmas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
