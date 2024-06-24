@@ -6,7 +6,7 @@ include './config/db.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM administrador WHERE correo = ?";
+$sql = "SELECT * FROM administrador WHERE correo = ? LIMIT 1";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $username);
 $stmt->execute();

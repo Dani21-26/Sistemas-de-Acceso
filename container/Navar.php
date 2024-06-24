@@ -1,16 +1,16 @@
 <?php
+// Verificar si se envió el formulario de cierre de sesión
 if (isset($_POST['cerrar_sesion'])) {
-    // Destruir todas las variables de sesión
-    session_unset();
+        session_unset();
 
-    // Destruir la sesión
-    session_destroy();
+        // Destruir la sesión
+        session_destroy();
 
-    // Redirigir a la página de inicio de sesión
-    header("Location: ../index.php");
-    exit();
+        // Redirigir a la página de inicio de sesión
+        header("Location: ../index.php");
+        exit();
+    
 }
-
 ?>
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -36,7 +36,7 @@ if (isset($_POST['cerrar_sesion'])) {
           <a href="../pages/usuarios.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">User</a>
         </li>
         <li>
-          <a href="../pages/alarma.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">alarm</a>
+          <a href="../pages/alarma.php" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Alarma</a>
         </li>
         <li>
           <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
@@ -47,7 +47,7 @@ if (isset($_POST['cerrar_sesion'])) {
           <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
               <li>
-                <a href="../pages/ajustes.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Settings</a>
+                <a href="../pages/ajustes_Admi.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Settings</a>
               </li>
               <li>
                 <form method="POST" action="">
