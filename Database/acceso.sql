@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2024 a las 00:55:56
+-- Tiempo de generación: 23-06-2024 a las 23:49:55
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -42,8 +42,6 @@ CREATE TABLE `acceso_de_user` (
 
 CREATE TABLE `administrador` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
   `correo` varchar(30) NOT NULL,
   `contraseña` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -52,8 +50,8 @@ CREATE TABLE `administrador` (
 -- Volcado de datos para la tabla `administrador`
 --
 
-INSERT INTO `administrador` (`id`, `nombre`, `telefono`, `correo`, `contraseña`) VALUES
-(1, 'admin', '3156788345', 'danieladiaz@gmail.com', 'Dani@22*');
+INSERT INTO `administrador` (`id`, `correo`, `contraseña`) VALUES
+(1, 'danieladiaz@gmail.com', 'Dani12Q*');
 
 -- --------------------------------------------------------
 
@@ -72,7 +70,6 @@ CREATE TABLE `alarmas` (
 --
 
 INSERT INTO `alarmas` (`idAlarma`, `fecha_hora`, `descripcion`) VALUES
-(1, '2024-06-22 18:50:53', 'Primera alarma'),
 (2, '2024-06-22 21:49:17', 'Segunda alarma');
 
 -- --------------------------------------------------------
