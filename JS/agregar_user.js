@@ -1,6 +1,7 @@
 document.getElementById('agregarUsuario').addEventListener('click', function() {
     document.getElementById('modalAgregarUsuario').classList.remove('hidden');
 });
+
 document.getElementById('cancelar').addEventListener('click', function() {
     document.getElementById('modalAgregarUsuario').classList.add('hidden');
 });
@@ -9,8 +10,7 @@ document.getElementById('modalAgregarUsuario').addEventListener('click', functio
     if (event.target === this) {
         this.classList.add('hidden');
     }
-});
-
+})
 document.getElementById('formAgregarUsuario').addEventListener('submit', function(event) {
     event.preventDefault(); 
     
