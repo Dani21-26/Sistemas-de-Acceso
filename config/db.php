@@ -4,12 +4,11 @@ $database = "acceso";
 $username = "root";
 $password = "";
 
-//creamos conecion
-$conexion = mysqli_connect($servername,  $username, $password, $database);
-//comprovamos que la conexion fue exitosa
-if($conexion->connect_errno){
-    die("coneccion Erronea-Error en la conexion: ".$conexion->connect_errno);
+// Crear conexión
+$conexion = mysqli_connect($servername, $username, $password, $database);
+
+// Comprobar conexión
+if ($conexion->connect_errno) {
+    die("Conexión fallida: " . $conexion->connect_errno);
 }
-
-
 ?>

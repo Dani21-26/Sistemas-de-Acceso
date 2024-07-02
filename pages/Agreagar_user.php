@@ -16,14 +16,16 @@
                                 <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
-                                        <input type="text" name="nombre" id="nombre" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <input type="text" name="nombre" id="nombre" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="huella_digital" class="block text-sm font-medium text-gray-700">Huella Digital</label>
-                                        <input type="number" name="huella_digital" id="huella_digital" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" readonly>
-                                        <button type="button" id="capturarHuella" class="mt-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            Capturar Huella
-                                        </button>
+                                        <div class="flex">
+                                            <button type="button" id="capturarHuella" class="ml-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                Capturar Huella
+                                            </button>
+                                        </div>
+                                        <input type="hidden" name="huella_digital" id="huella_digital">
                                     </div>
                                 </div>
                                 <div class="mt-5 sm:mt-6">
