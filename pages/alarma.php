@@ -50,7 +50,7 @@ $totalPaginas = ceil($totalRegistros / $porPagina);
                         <i class="fas fa-id-card"></i> ID
                     </th>
                     <th scope="col" class="px-6 py-3">
-                    <i class="fa-solid fa-calendar-days"></i> Fecha
+                    <i class="fa-solid fa-calendar-days"></i> Fecha y Hora
                     </th>
                     <th scope="col" class="px-6 py-3">
                     <i class="fa-solid fa-audio-description"></i> Descripción
