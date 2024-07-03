@@ -19,12 +19,12 @@
                                         <input type="text" name="nombre" id="nombre" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="cedula" class="block text-sm font-medium text-gray-700">Cedula</label>
-                                        <input type="text" name="nombre" id="nombre" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <label for="cedula" class="block text-sm font-medium text-gray-700">Cédula</label>
+                                        <input type="text" name="cedula" id="cedula" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="celular" class="block text-sm font-medium text-gray-700">Celular</label>
-                                        <input type="text" name="nombre" id="nombre" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                        <input type="text" name="celular" id="celular" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="huella_digital" class="block text-sm font-medium text-gray-700">Huella Digital</label>
