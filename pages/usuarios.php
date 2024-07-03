@@ -34,18 +34,15 @@ if (!isset($_SESSION['usuario'])) {
 
     $totalRegistros = $conexion->query("SELECT COUNT(*) FROM usuarios")->fetch_row()[0];
     $totalPaginas = ceil($totalRegistros / $porPagina);
-
-
     ?>
 
     <div class="w-full flex justify-end m-0 p-10">
-    <button id="agregarUsuario" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-between">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
-    </svg>
-    <span> Agregar Nuevo Usuario </span>
-</button>
-
+        <button id="agregarUsuario" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-between">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+            </svg>
+            <span> Agregar un Nuevo Usuario </span>
+        </button>
     </div>
     <div class="w-full flex justify-center">
         <table class="w-full md:w-3/5 lg:w-4xl text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-white shadow-md rounded-lg overflow-hidden m-4">
@@ -61,6 +58,11 @@ if (!isset($_SESSION['usuario'])) {
                         <i class="fas fa-fingerprint"></i> Huella Digital
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        <i class="fas fa-fingerprint"></i> cedula
+                    </th><th scope="col" class="px-6 py-3">
+                        <i class="fas fa-fingerprint"></i> celular
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         <i class="fas fa-cog"></i> Action
                     </th>
                 </tr>
@@ -74,6 +76,9 @@ if (!isset($_SESSION['usuario'])) {
                             <th scope="row" class="px-6 py-3 border-t"><?= $datos->idUsuario ?></th>
                             <td class="px-6 py-3 border-t"><?= $datos->nombre ?></td>
                             <td class="px-6 py-3 border-t"><?= $datos->huella_digital ?></td>
+                            <td class="px-6 py-3 border-t"><?= $datos->cedula?></td>
+                            <td class="px-6 py-3 border-t"><?= $datos->celular?></td>
+
                             <td class="px-6 py-3 border-t">
                                 <button class="eliminar-usuario bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2" data-id="<?= $datos->idUsuario ?>">
                                     <i class="fas fa-trash"></i> Eliminar
@@ -101,12 +106,10 @@ if (!isset($_SESSION['usuario'])) {
         <?php endfor;  ?>
     </div>
 
-
-    <!--Modad agrear usuario-->
+    <!--Modad agregar usuario-->
     <?php
     include('./Agreagar_user.php');
     ?>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     <script src="../JS/eliminar_usuario.js"></script>

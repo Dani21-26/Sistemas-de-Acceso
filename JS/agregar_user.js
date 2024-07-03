@@ -10,7 +10,15 @@ document.getElementById('modalAgregarUsuario').addEventListener('click', functio
     if (event.target === this) {
         this.classList.add('hidden');
     }
-})
+});
+
+document.getElementById('capturarHuella').addEventListener('click', function() {
+    fetch('http://192.168.40.112/registrarHuella') // Asegúrate de que esta IP es la del ESP32
+        .catch(error => {
+            console.error('No se pudo conectar con el ESP32:', error);
+        });
+});
+
 document.getElementById('formAgregarUsuario').addEventListener('submit', function(event) {
     event.preventDefault(); 
     
