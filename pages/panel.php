@@ -6,6 +6,54 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: ../index.php');
     exit;
 }
+
+// Conexión a la base de datos
+$servername = "localhost";
+$database = "acceso";
+$username = "root";
+$password = "";
+
+$conexion = mysqli_connect($servername, $username, $password, $database);
+if ($conexion->connect_errno) {
+    die("Conexión fallida: " . $conexion->connect_errno);
+}
+
+// Obtener datos de la base de datos
+$datosBarras = [];
+$datosCirculares = [];
+$nombreMasIngresos = '';
+$fechaMasIngresos = '';
+
+// Obtener la cantidad de aperturas por día en el mes actual
+$mesActual = date('Y-m');
+$queryDiarias = "SELECT DATE(fecha_hora) as fecha, COUNT(*) as cantidad FROM acceso_de_user WHERE tipo_acceso='Apertura' AND DATE_FORMAT(fecha_hora, '%Y-%m') = '$mesActual' GROUP BY DATE(fecha_hora)";
+$resultadoDiarias = mysqli_query($conexion, $queryDiarias);
+while ($fila = mysqli_fetch_assoc($resultadoDiarias)) {
+    $datosBarras[] = ['fecha' => $fila['fecha'], 'cantidad' => $fila['cantidad']];
+}
+
+// Obtener la cantidad de aperturas en el mes actual
+$queryMensuales = "SELECT COUNT(*) as cantidad FROM acceso_de_user WHERE tipo_acceso='Apertura' AND DATE_FORMAT(fecha_hora, '%Y-%m') = '$mesActual'";
+$resultadoMensuales = mysqli_query($conexion, $queryMensuales);
+if ($fila = mysqli_fetch_assoc($resultadoMensuales)) {
+    $datosCirculares[] = $fila['cantidad'];
+}
+
+// Obtener el nombre de la persona que más ingresa
+$queryMasIngresos = "SELECT u.nombre, COUNT(a.id) as cantidad FROM acceso_de_user a INNER JOIN usuarios u ON a.idUsuario = u.idUsuario WHERE a.tipo_acceso='Apertura' GROUP BY a.idUsuario ORDER BY cantidad DESC LIMIT 1";
+$resultadoMasIngresos = mysqli_query($conexion, $queryMasIngresos);
+if ($fila = mysqli_fetch_assoc($resultadoMasIngresos)) {
+    $nombreMasIngresos = $fila['nombre'];
+}
+
+// Obtener la fecha con más ingresos
+$queryFechaMasIngresos = "SELECT DATE(fecha_hora) as fecha, COUNT(*) as cantidad FROM acceso_de_user WHERE tipo_acceso='Apertura' GROUP BY DATE(fecha_hora) ORDER BY cantidad DESC LIMIT 1";
+$resultadoFechaMasIngresos = mysqli_query($conexion, $queryFechaMasIngresos);
+if ($fila = mysqli_fetch_assoc($resultadoFechaMasIngresos)) {
+    $fechaMasIngresos = $fila['fecha'];
+}
+
+mysqli_close($conexion);
 ?>
 
 <!DOCTYPE html>
@@ -17,31 +65,34 @@ if (!isset($_SESSION['usuario'])) {
     <?php require_once('../container/Link.php')?>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 <body class="">
 <?php require_once('../container/Navar.php') ?>
 
-<div class="flex items-center overflow-hidden">
-<div class="container mx-auto mt-10">
-    <canvas id="barChart" width="400" height="200"></canvas>
-</div>
+<div class="container mx-auto mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="col-span-1">
+        <div class="p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+            <h2 class="text-2xl font-semibold mb-2">Estadísticas</h2>
+            <p class="text-lg"><strong>Persona con más ingresos:</strong> <?php echo $nombreMasIngresos; ?></p>
+            <p class="text-lg"><strong>Fecha con más ingresos:</strong> <?php echo $fechaMasIngresos; ?></p>
+        </div>
+    </div>
 
-<div class="container mx-auto mt-10">
-    <canvas id="pieChart" width="400" height="200"></canvas>
-</div>
-</div>
+    <div class="col-span-1">
+        <canvas id="barChart" width="300" height="150"></canvas>
+    </div>
 
-<?php
-// Obtener datos de la base de datos (ejemplo)
-$datosBarras = array(10, 20, 30, 40, 50); // Datos de ejemplo para el gráfico de barras
-$datosCirculares = array(25, 35, 20, 10, 10); // Datos de ejemplo para el gráfico circular
-?>
+    <div class="col-span-1">
+        <canvas id="pieChart" width="300" height="150"></canvas>
+    </div>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Configurar datos para el gráfico de barras
         var datosBarras = <?php echo json_encode($datosBarras); ?>;
+        var etiquetasBarras = datosBarras.map(item => item.fecha);
+        var cantidadesBarras = datosBarras.map(item => item.cantidad);
 
         // Configurar datos para el gráfico circular
         var datosCirculares = <?php echo json_encode($datosCirculares); ?>;
@@ -51,13 +102,14 @@ $datosCirculares = array(25, 35, 20, 10, 10); // Datos de ejemplo para el gráfi
         var barChart = new Chart(ctxBar, {
             type: 'bar',
             data: {
-                labels: ['Dato 1', 'Dato 2', 'Dato 3', 'Dato 4', 'Dato 5'],
+                labels: etiquetasBarras,
                 datasets: [{
-                    label: 'Gráfico de Barras',
-                    data: datosBarras,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    label: 'Cantidad de Aperturas por Día',
+                    data: cantidadesBarras,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    barPercentage: 0.4 // Ajustar el grosor de las barras
                 }]
             },
             options: {
@@ -66,7 +118,26 @@ $datosCirculares = array(25, 35, 20, 10, 10); // Datos de ejemplo para el gráfi
                 },
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Cantidad de Aperturas'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Fecha'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true
                     }
                 }
             }
@@ -77,23 +148,15 @@ $datosCirculares = array(25, 35, 20, 10, 10); // Datos de ejemplo para el gráfi
         var pieChart = new Chart(ctxPie, {
             type: 'pie',
             data: {
-                labels: ['Dato 1', 'Dato 2', 'Dato 3', 'Dato 4', 'Dato 5'],
+                labels: ['Aperturas en el Mes Actual'],
                 datasets: [{
-                    label: 'Gráfico Circular',
+                    label: 'Aperturas en el Mes Actual',
                     data: datosCirculares,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)'
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
                     ],
                     borderWidth: 1
                 }]
@@ -101,14 +164,21 @@ $datosCirculares = array(25, 35, 20, 10, 10); // Datos de ejemplo para el gráfi
             options: {
                 animation: {
                     duration: 2000 // Duración de la animación en milisegundos
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
                 }
             }
         });
     });
 </script>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
 </html>
-
