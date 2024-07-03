@@ -12,8 +12,8 @@
 
     // Consulta SQL base
     $sql_base = "SELECT acceso_de_user.id, acceso_de_user.fecha_hora, acceso_de_user.tipo_acceso, usuarios.nombre 
-                 FROM acceso_de_user 
-                 JOIN usuarios ON acceso_de_user.idUsuario = usuarios.idUsuario";
+                FROM acceso_de_user 
+                JOIN usuarios ON acceso_de_user.idUsuario = usuarios.idUsuario";
 
     // Añadir filtro de fecha si se ha enviado una fecha
     if (!empty($fecha_filtro)) {

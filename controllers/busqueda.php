@@ -12,8 +12,8 @@ $fecha_filtro = isset($_GET['fecha']) ? $_GET['fecha'] : '';
 $nombre_filtro = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 
 $sql_base = "SELECT acceso_de_user.id, acceso_de_user.fecha_hora, acceso_de_user.tipo_acceso, usuarios.nombre 
-             FROM acceso_de_user 
-             JOIN usuarios ON acceso_de_user.idUsuario = usuarios.idUsuario";
+            FROM acceso_de_user 
+            JOIN usuarios ON acceso_de_user.idUsuario = usuarios.idUsuario";
 
 // Añadir filtros si se han enviado fecha o nombre
 if (!empty($fecha_filtro) || !empty($nombre_filtro)) {

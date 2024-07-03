@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$database = "acceso";
-$username = "root";
-$password = "";
+$database = "";
+$username = "id22363861_sistemadeaccesogrupo2";
+$password = "Maderadia22*";
 
 // Crear conexión
 $conexion = mysqli_connect($servername, $username, $password, $database);
