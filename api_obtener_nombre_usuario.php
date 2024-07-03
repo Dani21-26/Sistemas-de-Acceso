@@ -1,42 +1,41 @@
 <?php
-header('Content-Type: application/json');
-
-// Obtener el ID de la huella del parámetro GET
-$idHuella = $_GET['idHuella'];
-
-// Aquí deberías conectar a tu base de datos y consultar el nombre del usuario
-// Suponiendo que tienes una conexión a la base de datos establecida
-
+// Conexión a la base de datos
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "acceso";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Consulta para obtener el nombre del usuario
-$sql = "SELECT nombre FROM usuarios WHERE huella_digital = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $idHuella);
-$stmt->execute();
-$result = $stmt->get_result();
+// Obtener el ID de la huella
+$idHuella = $_GET['idHuella'];
 
 $response = array();
 
-if ($row = $result->fetch_assoc()) {
-    $response['nombre'] = $row['nombre'];
+if ($idHuella) {
+    // Preparar y ejecutar la consulta
+    $stmt = $conn->prepare("SELECT idUsuario, nombre FROM usuarios WHERE huella_digital = ?");
+    $stmt->bind_param("i", $idHuella);
+    $stmt->execute();
+    $stmt->bind_result($idUsuario, $nombre);
+
+    if ($stmt->fetch()) {
+        $response['idUsuario'] = $idUsuario;
+        $response['nombre'] = $nombre;
+    } else {
+        $response['error'] = "Usuario no encontrado";
+    }
+
+    $stmt->close();
 } else {
-    $response['nombre'] = "";
+    $response['error'] = "idHuella no proporcionado";
 }
 
-echo json_encode($response);
-
-$stmt->close();
 $conn->close();
+
+echo json_encode($response);
 ?>
