@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Escuchar clics en los botones de eliminación
     document.querySelectorAll('.eliminar-alarma').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             const idAlarma = this.getAttribute('data-id');
-
+            
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "No podrás revertir esta acción!",
@@ -14,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, eliminar!'
             }).then((result) => {
-                if (result.isConfirmed) {      
+                if (result.isConfirmed) {
                     fetch('../controllers/alarma/eliminar_alarma.php', {
                         method: 'POST',
                         headers: {
@@ -29,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                 'Eliminado!',
                                 'Alarma eliminada.',
                                 'success'
-                            );
-                            
-                            location.reload();
+                            ).then(() => {
+                                location.reload();
+                            });
                         } else {
                             Swal.fire(
                                 'Error!',

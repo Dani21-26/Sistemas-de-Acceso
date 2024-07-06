@@ -15,5 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idAlarma'])) {
     }
 
     $stmt->close();
+} else {
+    echo json_encode(['success' => false, 'message' => 'Invalid request']);
 }
 ?>

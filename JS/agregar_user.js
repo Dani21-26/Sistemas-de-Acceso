@@ -13,7 +13,7 @@ document.getElementById('modalAgregarUsuario').addEventListener('click', functio
 });
 
 document.getElementById('capturarHuella').addEventListener('click', function() {
-    fetch('http://192.168.40.112/registrarHuella') // Asegúrate de que esta IP es la del ESP32
+    fetch('http://192.168.39.112/registrarHuella') // Asegúrate de que esta IP es la del ESP32
         .catch(error => {
             console.error('No se pudo conectar con el ESP32:', error);
         });
