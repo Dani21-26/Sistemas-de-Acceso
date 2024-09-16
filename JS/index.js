@@ -45,29 +45,28 @@ document.getElementById('togglePassword').
             }
             return;
         }
-    
-        // Enviar los datos del formulario al servidor
-        fetch('login.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Redirigir al usuario a la nueva vista
-                window.location.href = './pages/panel.php'; 
-            } else {
-                // Mostrar mensaje de error
-                document.getElementById('passwordError').innerText = data.message;
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+    // Enviar los datos del formulario al servidor
+    fetch('login.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Redirigir al usuario a la nueva vista
+            window.location.href = './pages/panel.php'; 
+        } else {
+            // Mostrar mensaje de error
+            document.getElementById('passwordError').innerText = data.message;
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
     });
+});
     
     
 document.getElementById('forgotPasswordLink').

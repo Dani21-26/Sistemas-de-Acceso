@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$database = "";
-$username = "id22363861_sistemadeaccesogrupo2";
-$password = "Maderadia22*";
+$username = "root";
+$password = "";
+$database = "acceso";
 
 // Crear conexión
 $conexion = mysqli_connect($servername, $username, $password, $database);
@@ -11,4 +11,3 @@ $conexion = mysqli_connect($servername, $username, $password, $database);
 if ($conexion->connect_errno) {
     die("Conexión fallida: " . $conexion->connect_errno);
 }
-?>
