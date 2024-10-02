@@ -1,9 +1,4 @@
 <?php
-session_start();
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../index.php');
-    exit;
-}
 
 // Variables para mostrar mensajes de error
 $usernameError = '';
@@ -126,4 +121,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
 </body>
+
 </html>

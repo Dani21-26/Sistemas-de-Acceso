@@ -63,32 +63,34 @@ mysqli_close($conexion);
 
 <body class="bg-gray-100 pt-24"> <!-- Añadido pt-24 para crear espacio debajo del navbar -->
     <?php require_once('../container/Navar.php') ?>
-
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="md:w-2/6 mx-auto mt-10 relative -right-60">
-            <div class="p-5 bg-blue-200 shadow-lg rounded-lg border border-gray-200">
-                <h2 class="text-1xl font-semibold mb-2">Persona con más ingresos</h2>
-                <p class="text-lg"><?php echo $nombreMasIngresos; ?></p>
+    <div>
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="md:w-2/6 mx-auto mt-10 relative -right-60">
+                <div class="p-5 bg-blue-200 shadow-lg rounded-lg border border-gray-200">
+                    <h2 class="text-1xl font-semibold mb-2">Persona con más ingresos</h2>
+                    <p class="text-lg"><?php echo $nombreMasIngresos; ?></p>
+                </div>
             </div>
-        </div>
 
-        <div class="md:w-2/6 mx-auto mt-10">
-            <div class="p-5 bg-pink-200 shadow-lg rounded-lg border border-gray-200">
-                <h2 class="text-1xl font-semibold mb-2">Fecha con más ingresos</h2>
-                <p class="text-lg"><?php echo $fechaMasIngresos; ?></p>
+            <div class="md:w-2/6 mx-auto mt-10">
+                <div class="p-5 bg-pink-200 shadow-lg rounded-lg border border-gray-200">
+                    <h2 class="text-1xl font-semibold mb-2">Fecha con más ingresos</h2>
+                    <p class="text-lg"><?php echo $fechaMasIngresos; ?></p>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="container  mx-auto mt-10 relative -right-60 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="col-span-1 ">
-            <canvas id="barChart" width="300" height="150"></canvas>
+    <div class="mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-0"> <!-- El gap ya está en 0 -->
+        <div class="col-span-1 relative -right-40 ">
+            <canvas id="barChart" class="w-full h-auto"></canvas> <!-- Ancho y altura automáticos -->
         </div>
 
-        <div class="col-span-1">
-            <canvas id="pieChart" width="300" height="150"></canvas>
+        <div class="col-span-1 m-0 p-0">
+            <canvas id="pieChart" class="w-full h-auto"></canvas> <!-- Ancho y altura automáticos -->
         </div>
     </div>
+
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
