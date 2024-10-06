@@ -28,7 +28,7 @@
     ?>
 
     <div class="w-full flex justify-end  p-5">
-        <button id="agregarUsuario" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-between mt-10">
+        <button id="agregarUsuario" class="bg-blue-300 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-between mt-10">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
             </svg>
@@ -37,7 +37,7 @@
     </div>
     <div class="w-full flex justify-center  -mt-10 ">
         <table class="w-full md:w-3/5 lg:w-4xl text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-white shadow-md rounded-lg overflow-hidden m-4  mt-20 ml-10">
-            <thead class="text-xs text-gray-700 uppercase bg-blue-500 text-white">
+            <thead class="text-xs text-gray-700 uppercase bg-blue-300 text-white">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         <i class="fas fa-id-card"></i> ID
@@ -71,10 +71,10 @@
                             <td class="px-6 py-3 border-t"><?= $datos->cedula ?></td>
                             <td class="px-6 py-3 border-t"><?= $datos->celular ?></td>
                             <td class="px-6 py-3 border-t">
-                                <button class="eliminar-usuario bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2" data-id="<?= $datos->idUsuario ?>">
+                                <button class="eliminar-usuario bg-red-400 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2" data-id="<?= $datos->idUsuario ?>">
                                     <i class="fas fa-trash"></i> Eliminar
                                 </button>
-                                <button id="editarUsuario<?= $datos->idUsuario ?>" class="editar-usuario bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" data-id="<?= $datos->idUsuario ?>">
+                                <button id="editarUsuario<?= $datos->idUsuario ?>" class="editar-usuario bg-blue-300 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" data-id="<?= $datos->idUsuario ?>">
                                     <i class="fas fa-edit"></i> Editar
                                 </button>
 
