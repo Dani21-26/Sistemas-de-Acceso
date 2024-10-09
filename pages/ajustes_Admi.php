@@ -1,9 +1,17 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ./index.php');
+    exit;
+}
+
 
 // Variables para mostrar mensajes de error
 $usernameError = '';
 $passwordError = '';
-$phoneError = ''; // Nuevo campo para manejar errores de celular (si aplica)
+$phoneError = ''; //
 $successMessage = '';
 
 // Inicializar variables para el caso en que el formulario no se haya enviado aún
@@ -13,12 +21,11 @@ $phone = '';
 
 // Procesar el formulario si se ha enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once('../config/db.php'); // Incluye la conexión a la base de datos
+    require_once('../config/db.php');
 
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
-    $phone = isset($_POST['phone']) ? trim($_POST['phone']) : ''; // Nuevo campo de celular
-
+    $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
     // Validaciones
     if (empty($username)) {
         $usernameError = 'El correo electrónico no puede estar vacío';
@@ -84,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body class="bg-gradient-to-r from-purple-400 to-pink-500 min-h-screen">
+<body class="bg-gradient-to-r from-blue-300 to-green-300   justify-center  text-gray-500 dark:text-gray-400 ">
 
     <?php require_once('../container/Navar.php') ?>
 

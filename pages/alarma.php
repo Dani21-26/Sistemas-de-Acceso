@@ -1,16 +1,13 @@
 <?php
-// Verificar si se envió el formulario de cierre de sesión
-if (isset($_POST['cerrar_sesion'])) {
-    session_unset();
-
-    // Destruir la sesión
-    session_destroy();
-
-    // Redirigir a la página de inicio de sesión
-    header("Location: ../index.php");
-    exit();
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../index.php');
+    exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,10 +37,11 @@ if (isset($_POST['cerrar_sesion'])) {
     $totalPaginas = ceil($totalRegistros / $porPagina);
     ?>
 
+
     <div class="w-full flex justify-center ">
         <!-- Tabla de alarmas -->
         <table class="w-full md:w-3/5 lg:w-4xl text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-white shadow-md rounded-lg overflow-hidden m-4  mt-20 ml-10">
-            <thead class="text-xs text-gray-700 uppercase bg-blue-500 text-white">
+            <thead class="text-xs text-gray-700 uppercase bg-blue-300 text-white">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         <i class="fas fa-id-card"></i> ID
@@ -69,7 +67,7 @@ if (isset($_POST['cerrar_sesion'])) {
                             <td class="px-6 py-3 border-t"><?= $datos->fecha_hora ?></td>
                             <td class="px-6 py-3 border-t"><?= $datos->descripcion ?></td>
                             <td class="px-6 py-3 border-t">
-                                <button class="eliminar-alarma bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2" data-id="1">
+                                <button class="eliminar-alarma bg-red-300 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2" data-id="1">
                                     <i class="fas fa-trash"></i> Eliminar
                                 </button>
                             </td>

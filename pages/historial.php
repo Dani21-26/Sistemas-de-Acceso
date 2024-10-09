@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../index.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,19 +33,19 @@
     ?>
 
     <div class="container  mx-auto mt-20 relative -right-60" ">
-        <h1 class=" text-2xl text-center">Registros de Acceso</h1>
+    <h1 class=" text-2xl text-center bg-blue-300 inline-block mx-auto py-2 rounded ml-80">Registros de Acceso</h1>
         <div class="mb-4 flex justify-start items-end space-x-4">
-            <form method="GET" class="flex items-end">
+            <form method="GET" class="flex items-end ">
                 <label for="fecha" class="h-8 text-sm font-medium text-gray-700 mr-2">Filtros</label>
                 <input type="date" id="fecha" name="fecha" value="<?= htmlspecialchars($fecha_filtro) ?>" class="mt-1 p-2 block w-48 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($nombre_filtro) ?>" class="mt-1 p-2 block w-48 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Ingrese nombre">
-                <button type="submit" class="mt-2 p-2 bg-blue-500 text-white rounded-md ml-2">Buscar</button>
+                <button type="submit" class="mt-2 p-2 bg-blue-300 text-white rounded-md ml-2">Buscar</button>
                 <button type="button" id="limpiar" class="mt-2 p-2 bg-gray-500 text-white rounded-md ml-2">Limpiar</button>
             </form>
         </div>
-        <div class="overflow-x-auto flex justify-center">
+        <div class="overflow-x-auto ">
             <table class="w-full md:w-3/5 lg:w-4xl text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-white shadow-md rounded-lg overflow-hidden m-4  mt-10 ml-10">
-                <thead>
+                <thead class="text-xs text-gray-700 uppercase bg-blue-300 text-white">
                     <tr>
                         <th class="border px-2 py-1 text-left">ID</th>
                         <th class="border px-2 py-1 text-left">Fecha y Hora</th>

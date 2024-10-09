@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../index.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -36,6 +46,7 @@
         </button>
     </div>
     <div class="w-full flex justify-center  -mt-10 ">
+
         <table class="w-full md:w-3/5 lg:w-4xl text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 bg-white shadow-md rounded-lg overflow-hidden m-4  mt-20 ml-10">
             <thead class="text-xs text-gray-700 uppercase bg-blue-300 text-white">
                 <tr>
@@ -117,7 +128,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
-</html>
+
 <li>
     <a href="../pages/panel.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
 </li>
@@ -130,3 +141,5 @@
 <li>
     <a href="../pages/historial.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Record</a>
 </li>
+
+</html>
