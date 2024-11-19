@@ -79,7 +79,7 @@ if (!isset($_SESSION['usuario'])) {
             </tbody>
         </table>
     </div>
-    <script src="../JS/eliminar_alarma.js"></script>
+    <script src="../JS/editar_admin.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
