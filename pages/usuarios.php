@@ -1,13 +1,3 @@
-<?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../index.php');
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -85,7 +75,7 @@ if (!isset($_SESSION['usuario'])) {
                                 <button class="eliminar-usuario bg-red-400 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2" data-id="<?= $datos->idUsuario ?>">
                                     <i class="fas fa-trash"></i> Eliminar
                                 </button>
-                                <button id="editarUsuario<?= $datos->idUsuario ?>" class="editar-usuario bg-blue-300 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" data-id="<?= $datos->idUsuario ?>">
+                                <button class="editar-usuario bg-blue-300 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" data-id="<?= $datos->idUsuario ?>">
                                     <i class="fas fa-edit"></i> Editar
                                 </button>
 
@@ -113,10 +103,7 @@ if (!isset($_SESSION['usuario'])) {
     <?php
     include('./Agreagar_user.php');
     ?>
-    <!--Modal editar usuario-->
-    <?php
-    include('./modal_editar_usuario.php');
-    ?>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
     <script src="../JS/eliminar_usuario.js"></script>
@@ -127,19 +114,5 @@ if (!isset($_SESSION['usuario'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
-
-
-<li>
-    <a href="../pages/panel.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
-</li>
-<li>
-    <a href="../pages/usuarios.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">User</a>
-</li>
-<li>
-    <a href="../pages/alarma.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Alarm</a>
-</li>
-<li>
-    <a href="../pages/historial.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Record</a>
-</li>
 
 </html>

@@ -1,5 +1,4 @@
 <?php
-// Incluir el archivo de conexión
 require_once('./config/db.php');
 
 // Verificar que se ha recibido el idHuella

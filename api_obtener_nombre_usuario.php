@@ -4,8 +4,6 @@ header('Content-Type: application/json');
 // Obtener el ID de la huella del parámetro GET
 $idHuella = $_GET['idHuella'];
 
-// Aquí deberías conectar a tu base de datos y consultar el nombre del usuario
-// Suponiendo que tienes una conexión a la base de datos establecida
 
 $servername = "localhost";
 $username = "root";
@@ -15,7 +13,6 @@ $dbname = "acceso";
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }

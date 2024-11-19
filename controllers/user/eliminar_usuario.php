@@ -1,5 +1,5 @@
 <?php
-require_once('../../config/db.php');
+require_once('./config/db.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idUsuario'])) {
     $idUsuario = $_POST['idUsuario'];

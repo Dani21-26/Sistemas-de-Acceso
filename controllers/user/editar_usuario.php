@@ -1,42 +1,34 @@
 <?php
-// Verificar si se recibieron los datos por POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Configuración de conexión a la base de datos (debes ajustar esto según tu configuración)
-    require_once('../../config/db.php');
+header('Content-Type: application/json');
 
-    // Obtener los datos del formulario de edición
-    $idUsuario = $_POST['editIdUsuario'];
-    $nombre = $_POST['editNombre'];
-    $cedula = $_POST['editCedula'];
-    $celular = $_POST['editCelular'];
 
-    // Preparar la consulta SQL para actualizar el usuario
-    $sql = "UPDATE usuarios SET nombre = ?, cedula = ?, celular = ? WHERE idUsuario = ?";
-    $stmt = $conexion->prepare($sql);
+include_once '../../config/db.php';
 
-    // Verificar si la preparación de la consulta fue exitosa
-    if ($stmt === false) {
-        echo json_encode(['status' => 'error', 'message' => 'Error en la preparación de la consulta']);
-        exit();
-    }
+$data = json_decode(file_get_contents("php://input"), true);
 
-    // Vincular los parámetros a la consulta preparada
-    $stmt->bind_param("sssi", $nombre, $cedula, $celular, $idUsuario);
+if (isset($data['idUsuario']) && isset($data['nombre']) && isset($data['cedula']) && isset($data['celular'])) {
+    $idUsuario = $data['idUsuario'];
+    $nombre = $data['nombre'];
+    $cedula = $data['cedula'];
+    $celular = $data['celular'];
 
-    // Ejecutar la consulta
-    if ($stmt->execute()) {
-        // Éxito al actualizar
-        echo json_encode(['status' => 'success', 'message' => 'Usuario actualizado correctamente']);
+    // Actualizar los datos del usuario en la base de datos
+    $query = "UPDATE usuarios SET nombre = ?, cedula = ?, celular = ? WHERE idUsuario = ?";
+    if ($stmt = mysqli_prepare($conexion, $query)) {
+        mysqli_stmt_bind_param($stmt, "sssi", $nombre, $cedula, $celular, $idUsuario);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo json_encode(["success" => true]);
+        } else {
+            echo json_encode(["success" => false, "message" => "No se pudo actualizar el usuario"]);
+        }
+
+        mysqli_stmt_close($stmt);
     } else {
-        // Error al actualizar
-        echo json_encode(['status' => 'error', 'message' => 'Error al actualizar el usuario']);
+        echo json_encode(["success" => false, "message" => "Error en la preparación de la consulta"]);
     }
-
-    // Cerrar la conexión y liberar recursos
-    $stmt->close();
-    $conexion->close();
 } else {
-    // Si no es una solicitud POST, retornar error
-    echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);
+    echo json_encode(["success" => false, "message" => "Datos incompletos"]);
 }
-?>
+
+mysqli_close($conexion);

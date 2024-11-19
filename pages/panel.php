@@ -6,10 +6,6 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: ../index.php');
     exit;
 }
-
-
-
-
 // Conexión a la base de datos
 $servername = "localhost";
 $database = "acceso";
