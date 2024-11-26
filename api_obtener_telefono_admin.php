@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT telefono_admin FROM administrador WHERE id = 1"; // Asegúrate de ajustar la condición WHERE según tu lógica
+$sql = "SELECT telefono_admin FROM administrador WHERE id = 1" ; // Asegúrate de ajustar la condición WHERE según tu lógica
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
