@@ -65,7 +65,10 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     if ($password === $user['contraseña']) { // Cambia por password_verify si usas contraseñas cifradas
-        $_SESSION['usuario'] = $user['id'];
+        
+        $_SESSION['administrador'] = true;
+        $_SESSION['admin_id'] = $user['id']; // Captura el ID del administrador en la sesión
+
         echo json_encode(['success' => true]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Contraseña incorrecta']);

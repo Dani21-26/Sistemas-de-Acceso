@@ -1,5 +1,5 @@
 <?php
-require_once('./config/db.php');
+require_once('./config/');
 
 // Verificar que se ha recibido el idHuella
 if (!isset($_POST['idHuella'])) {
